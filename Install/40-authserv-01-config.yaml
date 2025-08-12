@@ -1,0 +1,26 @@
+#
+# Конфигурационный файл для сервера авторизации
+# /mnt/app-share/AUTHSERVER/config.yaml
+#
+http_server:
+  httpsMode: "off"
+  sslCert: "./config/ssl.cert"
+  sslKey:  "./config/ssl.key"
+  address: "0.0.0.0:8080"
+  timeout: 4s
+  idle_timeout: 30s
+user1:
+  email: "user1@mail.ru"
+  name: "User 1"
+  password: "user1"
+  payload: '{"hasura":{"x-hasura-allowed-roles":["dba","user"],"x-hasura-default-role":"user","x-hasura-user-id":"1"}}'
+user2:
+  email: "user2@mail.ru"
+  name: "User 2"
+  password: "user2"
+  payload: '{"hasura":{"x-hasura-allowed-roles":["admin","user"],"x-hasura-default-role":"user","x-hasura-user-id":"2"}}'
+user3:
+  email: "user3@mail.ru"
+  name: "User 3"
+  password: "user3"
+  payload: '{"hasura":{"x-hasura-allowed-roles":["manager","user"],"x-hasura-default-role":"user","x-hasura-user-id":"3"}}'

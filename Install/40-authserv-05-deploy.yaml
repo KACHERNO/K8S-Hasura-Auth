@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: authserver
+  name: authserver
+spec:
+#  replicas: 1
+  selector:
+    matchLabels:
+      app: authserver
+  template:
+    metadata:
+      labels:
+        app: authserver
+    spec:
+      containers:
+      - image: 88chernovka/testauthserver
+        name: authserver
+        env:
+        - name: CONFIG_PATH
+          value: /mnt/AUTHSERVER/config.yaml
+        - name: JWT_SECRET
+          value: "MY-TEST-SECRET-1234567890-1234567890"
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        volumeMounts:
+        - name: app-volume
+          mountPath: /mnt
+      volumes:
+      - name: app-volume
+        persistentVolumeClaim:
+          claimName: app-pvc
+
+

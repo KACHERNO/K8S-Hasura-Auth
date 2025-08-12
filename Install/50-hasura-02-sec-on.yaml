@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hasura
+    hasuraService: custom
+  name: hasura
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hasura
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hasura
+    spec:
+      containers:
+      - image: hasura/graphql-engine:v2.46.0
+        imagePullPolicy: IfNotPresent
+        name: hasura
+#        command: ["graphql-engine"]
+#        args: ["serve", "--enable-console"]
+        env:
+        - name: HASURA_GRAPHQL_DATABASE_URL
+          value: postgres://postgres:postgres@timescaledb:5432/postgres
+        ## enable the console served by server
+        - name: HASURA_GRAPHQL_ENABLE_CONSOLE
+          value: "true"
+        ## enable debugging mode. It is recommended to disable this in production
+        - name: HASURA_GRAPHQL_DEV_MODE
+          value: "true"
+        - name: HASURA_GRAPHQL_ADMIN_SECRET
+          value: "1qaz!QAZ1qaz"
+        - name: HASURA_GRAPHQL_JWT_SECRET
+          value: '{"type":"HS256","key":"MY-TEST-SECRET-1234567890-1234567890","claims_namespace_path":"$.hasura"}'
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+        resources: {}
