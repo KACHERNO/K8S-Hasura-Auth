@@ -1,4 +1,4 @@
-# K8S-Hasura-Auth - набор скриптов для развертывания GraphQL Backend-сервера "HASURA" на "Kubernetes".
+# K8S-Hasura-Auth - набор скриптов для развертывания GraphQL Backend-сервера на базе "Hasura GraphQL Engine".
 
 ## Описание проекта:
 
