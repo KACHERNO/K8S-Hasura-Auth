@@ -15,7 +15,8 @@ CREATE TABLE HWLIST_SOURCE (
 
 \COPY hwlist_source FROM 'HWLIST.csv' (DELIMITER ';', FORMAT CSV, NULL '', ENCODING 'WIN1251');
 
-update HWLIST_SOURCE set HW_CFGI_ID = 58 where CFGITEM = '��������� ���� ��������� ������� PRO P30 K40 R54';
+-- Исправление ошибки в данных
+update HWLIST_SOURCE set HW_CFGI_ID = 58 where CFGITEM = 'Системный блок категории Премиум PRO P30 K40 R54';
 
 
 DROP TABLE HW_CFGITEMS;
@@ -83,4 +84,5 @@ AND
  HW_DEPT_ID = DEPT_ID 
 ;
 
-update hw_list set hw_room = REPLACE(hw_room, '��_', '');
+-- Исправление в данных
+update hw_list set hw_room = REPLACE(hw_room, 'НБ_', '');
