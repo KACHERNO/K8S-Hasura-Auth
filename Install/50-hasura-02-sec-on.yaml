@@ -35,6 +35,8 @@ spec:
           value: "1qaz!QAZ1qaz"
         - name: HASURA_GRAPHQL_JWT_SECRET
           value: '{"type":"HS256","key":"MY-TEST-SECRET-1234567890-1234567890","claims_namespace_path":"$.hasura"}'
+        - name: HASURA_GRAPHQL_UNAUTHORIZED_ROLE
+          value: "public"
         ports:
         - name: http
           containerPort: 8080

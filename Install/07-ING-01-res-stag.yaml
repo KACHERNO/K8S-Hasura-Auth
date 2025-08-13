@@ -38,7 +38,7 @@ spec:
               service:
                 name: web1
                 port:
-                  number: 8080
+                  number: 80
     - host: test3.kacherno.online
       http:
         paths:
@@ -48,4 +48,4 @@ spec:
               service:
                 name: web2
                 port:
-                  number: 8080
+                  number: 80

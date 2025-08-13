@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web1
+spec:
+  selector:
+    matchLabels:
+      app: web1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web1
+    spec:
+      volumes:
+        - name: pv-static1
+          persistentVolumeClaim:
+            claimName: pvc-static1
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: pv-static1
+              mountPath: /usr/share/nginx/html
