@@ -26,7 +26,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: hello-world
+                name: web1
                 port:
                   number: 80
     - host: test2.kacherno.online
@@ -46,6 +46,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: web2
+                name: web1
                 port:
                   number: 80

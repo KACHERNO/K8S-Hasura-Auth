@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web1
+spec:
+  selector:
+    matchLabels:
+      app: web1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web1
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+          - containerPort: 80
+        volumeMounts:
+          - name: pv-static1
+            mountPath: /usr/share/nginx/html
+          - name: nginx-conf2
+            mountPath: /etc/nginx/nginx.conf # mount nginx-conf volumn to /etc/nginx
+            subPath: nginx.conf
+            readOnly: true
+      volumes:
+      - name: pv-static1
+        persistentVolumeClaim:
+          claimName: pvc-static1
+      - name: nginx-conf2
+        configMap:
+          name: nginx-conf2 # place ConfigMap `nginx-conf` on /etc/nginx
+          items:
+            - key: nginx.conf
+              path: nginx.conf

@@ -1,6 +1,6 @@
 #
 # Конфигурационный файл для сервера авторизации
-# /mnt/app-share/AUTHSERVER/config.yaml
+# Расположение: /mnt/app-share/AUTHSERVER/config.yaml
 #
 http_server:
   httpsMode: "off"
@@ -15,12 +15,12 @@ user1:
   password: "user1"
   payload: '{"hasura":{"x-hasura-allowed-roles":["dba","user"],"x-hasura-default-role":"user","x-hasura-user-id":"1"}}'
 user2:
-  email: "user2@mail.ru"
-  name: "User 2"
-  password: "user2"
+  email: "tom@gmail.com"
+  name: "User Tom"
+  password: '1qaz!QAZ1qaz'
   payload: '{"hasura":{"x-hasura-allowed-roles":["admin","user"],"x-hasura-default-role":"user","x-hasura-user-id":"2"}}'
 user3:
-  email: "user3@mail.ru"
-  name: "User 3"
-  password: "user3"
+  email: "ivan@mail.ru"
+  name: "User Ivan"
+  password: 'Topaz108_Chernov'
   payload: '{"hasura":{"x-hasura-allowed-roles":["manager","user"],"x-hasura-default-role":"user","x-hasura-user-id":"3"}}'
