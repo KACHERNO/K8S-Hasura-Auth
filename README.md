@@ -15,3 +15,4 @@
 - Hasura GraphQL Engine 2.46.0.
 - PostgreSQL 17 + TimeScaleDB.
 
+## https://test1.kacherno.online
